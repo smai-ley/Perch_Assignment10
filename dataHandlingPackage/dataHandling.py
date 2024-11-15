@@ -33,7 +33,7 @@ class handleData:
 
     def interpretJSON(self):
         json_cat = """
-                 {
+                    {
                     "cats": {
                             "id": "a3f",
                             "url": """ + {self.__url} +""",
@@ -41,7 +41,9 @@ class handleData:
                             "height": 900"
                             }
                     }
-                    """
+        """
+        data = json.loads(json_string)  
+        parsed_json = json.loads(json_string)
         
         cat_dict = json.loads(json_cat)
         self.iterate_dictionary(cat_dict)
@@ -55,11 +57,11 @@ class handleData:
             print ("key is " + str(type(k)) + ", value is " + str(type(v)))
             if isinstance(v, dict):
                 self.iterate_dictionary(v)
-        else:
+            else:
             print("{0} : {1}".format(k, v))
-            if (isinstance(v, list)):
-                for vv in v:
-                    if (isinstance(vv, dict)):
+                if (isinstance(v, list)):
+                    for vv in v:
+                        if (isinstance(vv, dict)):
                         self.iterate_dictionary(vv)
 
                         
