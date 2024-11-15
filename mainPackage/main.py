@@ -14,31 +14,6 @@
 import json
 import requests
 
-
-def JSON():
-    
-    json_string = """
-    {
-    "cats": {
-        "id": "a3f",
-        "url": "https://cdn2.thecatapi.com/images/a3f.jpg",
-        "width": 1200,
-        "height": 900"
-            }
-    }
-    """
-    data = json.loads(json_string)  
-    parsed_json = json.loads(json_string)
-    print(parsed_json)
-
-
-    
-
-
-
-                        
-
-
 if __name__ == "__main__":
     None
  
