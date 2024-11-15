@@ -5,6 +5,7 @@
 # Course #/Section: IS4010 001
 # Semester/Year: Fall 2024
 # Brief Description of the assignment:  
+
 # Brief Description of what this module does. {Do not copy/paste from a previous assignment. Put some thought into this. required}
 # Citations:
 # Anything else that's relevant:
@@ -40,8 +41,8 @@ class handleData:
                             "height": 900"
                             }
                     }
-        """
-
+                    """
+        
         cat_dict = json.loads(json_cat)
         self.iterate_dictionary(cat_dict)
         print(cat_dict)
