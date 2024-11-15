@@ -41,5 +41,7 @@ class apiWaiter:
 
         jsonResults = response.content
         
-        return jsonResults
+        parsed_json = json.loads(jsonResults)
+        
+        return(parsed_json)
     
