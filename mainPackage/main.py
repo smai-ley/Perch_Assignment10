@@ -26,16 +26,11 @@ def JSON():
         "height": 900"
             }
     }
-"""
+    """
     data = json.loads(json_string)  
     print(data)
 
-def API():
-    response = requests.get('https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=live_D4aC1GI9UzjP0oipQsrgcE8lUIlHTQ3VzBCjujD4vOTa3oV1gCeRnB0W2bDr0PtC')
-    json_string = response.content
-    
-    parsed_json = json.loads(json_string)
-    print(parsed_json)
+
     
 
 

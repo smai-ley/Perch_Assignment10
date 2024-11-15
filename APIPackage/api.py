@@ -16,24 +16,32 @@ import json
 import requests
 
 class apiWaiter:
+    """
+    Performs interactions and requests data with API Server
+    """
     def __init__(self, keyString):
         """
-        Initilize apiWaiter object
-        @param keyString: the string of the api key provided in the comment submission on canvas
+        Constructor
+        @param keyString string: the api key provided in the comment submission on Canvas
         """
-        self.keyString = keyString
+        self.__keyString = keyString
         
-        return self
+    def getKeyString(self):
+        """
+        @return: the key as a string
+        """
+        return f"{self.__keyString}"
     
-    def submitToServer(url):
+    def submitToServer(self):
         """
         Submits url to API server to receive results
-        @param url: the string with the url
         @return: the json results
         """
-        # self.keyString
-        jsonResults = None
+        response = requests.get('https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=' + self.__keyString)
+
+        jsonResults = response.content
         
-        return jsonResults
-    
+        parsed_json = json.loads(jsonResults)
+        
+        return(parsed_json)
     
