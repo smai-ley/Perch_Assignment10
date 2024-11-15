@@ -5,7 +5,6 @@
 # Course #/Section: IS4010 001
 # Semester/Year: Fall 2024
 # Brief Description of the assignment:  
-
 # Brief Description of what this module does. {Do not copy/paste from a previous assignment. Put some thought into this. required}
 # Citations:
 # Anything else that's relevant:
@@ -15,31 +14,30 @@
 import json
 import requests
 
-json_string = """
-{
-"researcher": {
-"name": "Ford Prefect",
-"species": "Betelgeusian",
-"relatives": [
-{
-"name": "Zaphod Beeblebrox",
-"species": "Betelgeusian"
-}
-]
-}
-}
-"""
-data = json.loads(json_string)  
 
-response = requests.get('https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=pfJKDXPzTykVL73ehnPyY8pkDQLjfq5cz5LqCkl3')
-json_string = response.content
-parsed_json = json.loads(json_string) # Now we have a python dictionary
-#print(parsed_json)
-#print(parsed_json['data'][0]['description'])
-#print(parsed_json['data'][0]['directionsInfo'])
-total = int(parsed_json['total']) # The number of parks that were returned
-for park in parsed_json['data']:
-    print(park)
+def JSON():
+    
+    json_string = """
+    {
+    "cats": {
+        "id": "a3f",
+        "url": "https://cdn2.thecatapi.com/images/a3f.jpg",
+        "width": 1200,
+        "height": 900"
+            }
+    }
+"""
+    data = json.loads(json_string)  
+    print(data)
+
+def API():
+    response = requests.get('https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=live_D4aC1GI9UzjP0oipQsrgcE8lUIlHTQ3VzBCjujD4vOTa3oV1gCeRnB0W2bDr0PtC')
+    json_string = response.content
+    
+    parsed_json = json.loads(json_string)
+    print(parsed_json)
+    
+
 
 def iterate_dictionary(myDictionary):
     for k, v in myDictionary.items():
@@ -52,6 +50,8 @@ def iterate_dictionary(myDictionary):
                 for vv in v:
                     if (isinstance(vv, dict)):
                         iterate_dictionary(vv)
+                        
+API()
 
 if __name__ == "__main__":
     None
