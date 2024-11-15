@@ -32,7 +32,7 @@ class handleData:
 
     def interpretJSON(self):
         json_cat = """
-                    {
+                 {
                     "cats": {
                             "id": "a3f",
                             "url": """ + {self.__url} +""",
@@ -41,6 +41,7 @@ class handleData:
                             }
                     }
         """
+
         cat_dict = json.loads(json_cat)
         self.iterate_dictionary(cat_dict)
         print(cat_dict)
@@ -61,5 +62,6 @@ class handleData:
                         self.iterate_dictionary(vv)
 
                         
+
 
 
