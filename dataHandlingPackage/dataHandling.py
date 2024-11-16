@@ -21,9 +21,10 @@ class handleData:
     def __init__(self, url):
         """
         Constructor
+        @url string: the url of the website
         """
         self.__url = url
-    
+
     def getUrl(self):
         """
         Returns URL member
@@ -35,7 +36,7 @@ class handleData:
                     {
                     "cats": {
                             "id": "a3f",
-                            "url": """ + {self.__url} +""",
+                            "url": """ + {self.__url} +""", #https://cdn2.thecatapi.com/images/a3f.jpg
                             "width": 1200,
                             "height": 900"
                             }

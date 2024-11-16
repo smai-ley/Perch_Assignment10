@@ -11,9 +11,10 @@
 
 #main.py
 
-import json
-import requests
+from APIPackage.api import *
+from dataHandlingPackage.dataHandling import *
 
 if __name__ == "__main__":
-    None
+    apiBuddy = apiWaiter("live_D4aC1GI9UzjP0oipQsrgcE8lUIlHTQ3VzBCjujD4vOTa3oV1gCeRnB0W2bDr0PtC") # init an apiWaiter object with the key to the API
+    apiBuddy.submitToServer() # submits key to API server and returns JSON data
  
