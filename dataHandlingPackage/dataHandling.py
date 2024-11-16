@@ -4,9 +4,9 @@
 # Due Date: 11/15/24 (Extension)
 # Course #/Section: IS4010 001
 # Semester/Year: Fall 2024
-# Brief Description of the assignment:  
+# Brief Description of the assignment: Find an API. Communicate with it. Steal the data (joke). Load the json data to a dict, print cool info from dict.
 
-# Brief Description of what this module does. {Do not copy/paste from a previous assignment. Put some thought into this. required}
+# Brief Description of what this module does: this includes the class that handles and performs actions on the data that is read by the end-user
 # Citations:
 # Anything else that's relevant:
 
@@ -14,58 +14,56 @@
 
 import json
 import requests
+import csv
 
 class handleData:
     """
     Handles the data passed from the API Package, loads json into Python dict
     """
-    def __init__(self, url):
+    def __init__(self):
         """
         Constructor
-        @url string: the url of the website
         """
-        self.__url = url
 
-    def getUrl(self):
+    def loadJSONtoDict(self, jsonResponse):
         """
-        Returns URL member
+        Loads JSON data into a dictionary
+        @param jsonResponse: the JSON data
+        @return: the dictionary
         """
-        return f"{self.__url}"
+        parsed_json = json.loads(jsonResponse)
 
-    def interpretJSON(self):
-        json_cat = """
-                    {
-                    "cats": {
-                            "id": "a3f",
-                            "url": """ + {self.__url} +""", #https://cdn2.thecatapi.com/images/a3f.jpg
-                            "width": 1200,
-                            "height": 900"
-                            }
-                    }
+        return parsed_json
+    
+    def interpretData(self, parsedData):
         """
-        data = json.loads(json_string)  
-        parsed_json = json.loads(json_string)
+        Prints interesting data taken from the API in an easy-to-read format
+        @param parsedData: the dictionary to be explored for life changing secrets and information. Huzzah. 
+        """
+        print("The",parsedData[0]['breeds'][0]['name'], "cat originates from", parsedData[0]['breeds'][0]['origin'],".")
+        print("Its temperament can be described as: ", parsedData[0]['breeds'][0]['temperament'])
+        print("Short description of the cat:", parsedData[0]['breeds'][0]['description'])
+        print("To find more information about",parsedData[0]['breeds'][0]['name'], "cats, visit", parsedData[0]['breeds'][0]['wikipedia_url'])
         
-        cat_dict = json.loads(json_cat)
-        self.iterate_dictionary(cat_dict)
-        print(cat_dict)
+    def writeToNewDict(self, parsedData):
+        """
+        Writes a larger dict into a new dict 
+        @param parsedData: the dict to be put into another dict
+        """
+        cooler_cat_dict = {"name": parsedData[0]['breeds'][0]['name'], 
+                           "origin": parsedData[0]['breeds'][0]['origin'], 
+                           "temperament": parsedData[0]['breeds'][0]['temperament'], 
+                           "description":parsedData[0]['breeds'][0]['description'], 
+                           "weburl":parsedData[0]['breeds'][0]['wikipedia_url']}
         
-        
-     
-        
-    def iterate_dictionary(self, myDictionary):
-        for k, v in myDictionary.items():
-            print ("key is " + str(type(k)) + ", value is " + str(type(v)))
-            if isinstance(v, dict):
-                self.iterate_dictionary(v)
-            else:
-            print("{0} : {1}".format(k, v))
-                if (isinstance(v, list)):
-                    for vv in v:
-                        if (isinstance(vv, dict)):
-                        self.iterate_dictionary(vv)
-
-                        
-
-
-
+        return cooler_cat_dict
+    
+    def writeToCSV(self, dictionary):
+        """
+        Writes a dictionary to a csv
+        @param dictionary: the dictionary to be written to a csv
+        """
+        with open("coolcat.csv", "w", newline="") as f:
+            w = csv.DictWriter(f, dictionary.keys())
+            w.writeheader()
+            w.writerow(dictionary)

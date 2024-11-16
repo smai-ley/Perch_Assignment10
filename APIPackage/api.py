@@ -4,9 +4,9 @@
 # Due Date: 11/15/24 (Extension)
 # Course #/Section: IS4010 001
 # Semester/Year: Fall 2024
-# Brief Description of the assignment:  
+# Brief Description of the assignment: Find an API. Communicate with it. Steal the data (joke). Load the json data to a dict, print cool info from dict.
 
-# Brief Description of what this module does. {Do not copy/paste from a previous assignment. Put some thought into this. required}
+# Brief Description of what this module does: this includes the class that creates an object to interact with the api server
 # Citations:
 # Anything else that's relevant:
 
