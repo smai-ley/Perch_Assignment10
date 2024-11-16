@@ -17,6 +17,9 @@ from dataHandlingPackage.dataHandling import *
 
 
 if __name__ == "__main__":
+    """
+    The big kahuna. The main function that performs all of the function calls for the api and the data handling. Yeehaw.
+    """
     apiBuddy = apiWaiter("live_D4aC1GI9UzjP0oipQsrgcE8lUIlHTQ3VzBCjujD4vOTa3oV1gCeRnB0W2bDr0PtC") # init an apiWaiter object with the key to the API
     jsonResponse = apiBuddy.submitToServer() # submits key to API server and returns JSON data, storing to a variable
     
