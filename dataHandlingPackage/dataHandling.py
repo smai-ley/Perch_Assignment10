@@ -13,6 +13,7 @@
 # dataHandling.py
 
 import json
+import requests
 
 class handleData:
     """
@@ -32,7 +33,7 @@ class handleData:
         return f"{self.__url}"
 
     def interpretJSON(self):
-        json_string = """
+        json_cat = """
                     {
                     "cats": {
                             "id": "a3f",
@@ -45,19 +46,26 @@ class handleData:
         data = json.loads(json_string)  
         parsed_json = json.loads(json_string)
         
-        return parsed_json
+        cat_dict = json.loads(json_cat)
+        self.iterate_dictionary(cat_dict)
+        print(cat_dict)
         
-    def iterate_json_string(myDictionary):
+        
+     
+        
+    def iterate_dictionary(self, myDictionary):
         for k, v in myDictionary.items():
-            print("key is " + str(type(k)) + ", value is " + str(type(v)))
+            print ("key is " + str(type(k)) + ", value is " + str(type(v)))
             if isinstance(v, dict):
-                iterate_json_string(v)
+                self.iterate_dictionary(v)
             else:
-                print("{key} : {value}".format(k, v))
+            print("{0} : {1}".format(k, v))
                 if (isinstance(v, list)):
                     for vv in v:
                         if (isinstance(vv, dict)):
-                            iterate_json_string(vv)
+                        self.iterate_dictionary(vv)
+
+                        
 
 
 

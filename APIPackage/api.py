@@ -42,5 +42,4 @@ class apiWaiter:
         jsonResults = response.content
         
         return jsonResults
-        
     
